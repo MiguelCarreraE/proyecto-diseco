@@ -1,16 +1,19 @@
 import React, { useState, useEffect } from "react";
 import { Item } from "./Item";
+import { getMenu } from "../services/menuApi";
 
 export const Menu = () => {
   const [items, setItems] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch("https://api-menu-9b5g.onrender.com/menu")
-      .then((response) => response.json())
+    getMenu()
       .then((data) => {
         setItems(data);
         setLoading(false);
+      })
+      .catch((error) => {
+        console.error(error);
       });
   }, []);
 
