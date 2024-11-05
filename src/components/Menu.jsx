@@ -19,10 +19,10 @@ export const Menu = () => {
 
   return (
     <>
-      <h1>Menu</h1>
+      <h1 className="text-3xl font-bold">Menu</h1>
 
       {loading ? (
-        <h3>Loading...</h3>
+        <h3 className="text-xl">Loading...</h3>
       ) : (
         items.map((item) => (
           <Item
