@@ -1,14 +1,18 @@
 import { useState } from "react";
-import "./App.css";
+import { Header } from "./components/Header";
 import { Menu } from "./components/Menu";
 import { Orders } from "./components/Orders";
 
 
 function App() {
+  const [isAdmin, setIsAdmin] = useState(false);
+
   return (
     <>
-      <Menu />
-      <Orders />
+      <Header isAdmin={isAdmin} setIsAdmin={setIsAdmin} />
+      <div className="container mx-auto px-4">
+        {isAdmin ? <h1 className="text-3xl font-bold">Admin</h1> : <Menu />}
+      </div>
     </>
   );
 }
