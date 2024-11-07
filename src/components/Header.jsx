@@ -1,6 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
+import { logoutUser } from "../services/auth";
 
-export const Header = ({ isAdmin, setIsAdmin }) => {
+export const Header = ({
+  isAdmin,
+  setIsAdmin,
+  isAuthenticated,
+  setIsAuthenticated,
+}) => {
   const handleUser = () => {
     setIsAdmin(!isAdmin);
   };
@@ -21,6 +27,19 @@ export const Header = ({ isAdmin, setIsAdmin }) => {
                 {isAdmin ? "Admin" : "User"}
               </button>
             </li>
+            {isAuthenticated && (
+              <li>
+                <button
+                  onClick={async () => {
+                    await logoutUser();
+                    setIsAuthenticated(false);
+                  }}
+                  className="bg-white text-gray-800 px-2 py-1 rounded"
+                >
+                  Logout
+                </button>
+              </li>
+            )}
           </ul>
         </nav>
       </div>
