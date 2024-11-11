@@ -1,17 +1,36 @@
-import { useState } from "react";
-import { Header } from "./components/Header";
-import { Menu } from "./components/Menu";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { AuthProvider } from "./context/AuthContext";
+import { Login } from "./components/Login";
+import { PrivateRoute } from "./components/PrivateRoute";
+import { PublicRoute } from "./components/PublicRoute";
+import { RedirectBasedOnAuth } from "./components/RedirectBasedOnAuth";
+import { Dashboard } from "./components/Dashboard";
 
 function App() {
-  const [isAdmin, setIsAdmin] = useState(false);
-
   return (
-    <>
-      <Header isAdmin={isAdmin} setIsAdmin={setIsAdmin} />
-      <div className="container mx-auto px-4">
-        {isAdmin ? <h1 className="text-3xl font-bold">Admin</h1> : <Menu />}
-      </div>
-    </>
+    <Router>
+      <AuthProvider>
+        <Routes>
+          <Route
+            path="/login"
+            element={
+              <PublicRoute>
+                <Login />
+              </PublicRoute>
+            }
+          />
+          <Route
+            path="/dashboard"
+            element={
+              <PrivateRoute>
+                <Dashboard />
+              </PrivateRoute>
+            }
+          />
+          <Route path="/" element={<RedirectBasedOnAuth />} />
+        </Routes>
+      </AuthProvider>
+    </Router>
   );
 }
 
