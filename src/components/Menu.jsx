@@ -24,14 +24,11 @@ export const Menu = () => {
       {loading ? (
         <h3 className="text-xl">Loading...</h3>
       ) : (
-        items.map((item) => (
-          <Item
-            key={item.id}
-            name={item.name}
-            description={item.description}
-            price={item.price}
-          />
-        ))
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          {items.map((item) => (
+            <Item key={item.id} {...item} />
+          ))}
+        </div>
       )}
     </>
   );
