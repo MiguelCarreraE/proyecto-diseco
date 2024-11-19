@@ -1,8 +1,17 @@
 import React from "react";
 import { Button } from "@/components/ui/button";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { Separator } from "@/components/ui/separator"
-
+import { Separator } from "@/components/ui/separator";
+import { Toggle } from "@/components/ui/toggle";
+import { ShoppingCart } from "lucide-react";
+import {
+  Sheet,
+  SheetContent,
+  SheetDescription,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from "@/components/ui/sheet";
 
 export const Header = ({ isAdmin, setIsAdmin }) => {
   const handleUser = () => {
@@ -37,6 +46,23 @@ export const Header = ({ isAdmin, setIsAdmin }) => {
             >
               {isAdmin ? "User Mode" : "Admin Mode"}
             </Button>
+
+            <Sheet>
+              <SheetTrigger>
+                <Toggle>
+                  <ShoppingCart />
+                </Toggle>
+              </SheetTrigger>
+              <SheetContent>
+                <SheetHeader>
+                  <SheetTitle>Are you absolutely sure?</SheetTitle>
+                  <SheetDescription>
+                    This action cannot be undone. This will permanently delete
+                    your account and remove your data from our servers.
+                  </SheetDescription>
+                </SheetHeader>
+              </SheetContent>
+            </Sheet>
           </div>
         </div>
       </div>
