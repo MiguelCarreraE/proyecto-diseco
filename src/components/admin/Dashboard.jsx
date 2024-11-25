@@ -116,17 +116,17 @@ export const Dashboard = () => {
                 </div>
               ))}
             </div>
-            <div className="flex space-x-4 justify-center mt-4">
+            <div className="flex space-x-2 justify-center mt-4">
               <button
                 onClick={() => handleStatusChange(order.id, "Listo")}
-                className="flex items-center space-x-1 bg-green-100 text-green-600 px-3 py-2 rounded-md hover:bg-green-200"
+                className="flex items-center  bg-green-100 text-green-600 px-2 py-2 rounded-md hover:bg-green-200"
               >
                 <CheckCircle className="w-4 h-4" />
                 <span>Listo</span>
               </button>
               <button
                 onClick={() => handleStatusChange(order.id, "Entregado")}
-                className="flex items-center space-x-1 bg-blue-100 text-blue-600 px-3 py-2 rounded-md hover:bg-blue-200"
+                className="flex items-center  bg-blue-100 text-blue-600 px-2 py-2 rounded-md hover:bg-blue-200"
               >
                 <Truck className="w-4 h-4" />
                 <span>Entregado</span>
