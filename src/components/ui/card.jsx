@@ -47,4 +47,19 @@ const CardFooter = React.forwardRef(({ className, ...props }, ref) => (
 ))
 CardFooter.displayName = "CardFooter"
 
-export { Card, CardHeader, CardFooter, CardTitle, CardDescription, CardContent }
+const CardButton = React.forwardRef(({ className, children, ...props }, ref) => (
+  <button
+    ref={ref}
+    className={cn(
+      "px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2",
+      className
+    )}
+    {...props}
+  >
+    {children}
+  </button>
+));
+
+CardButton.displayName = "CardButton";
+
+export { Card, CardHeader, CardFooter, CardTitle, CardDescription, CardContent, CardButton }

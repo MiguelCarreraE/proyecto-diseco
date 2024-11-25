@@ -18,7 +18,7 @@ import {
         email,
         password
       );
-      console.log("User registered: ", userCredential.user.uid);
+     
       return { user: userCredential.user, error: null };
     } catch (error) {
       console.error("Error registering user: ", error.message);
@@ -34,10 +34,10 @@ import {
         email,
         password
       );
-      console.log("User logged in: ", userCredential.user.uid);
+
       const userDocRef = doc(db, "Users", userCredential.user.uid);
       const userDoc = await getDoc(userDocRef);
-      console.log("User data: ", userDoc.data());
+
   
       return { user: userCredential.user, error: null };
     } catch (error) {
@@ -50,7 +50,6 @@ import {
   const logoutUser = async () => {
     try {
       await signOut(auth);
-      console.log("User logged out");
       return { user: null, error: null };
     } catch (error) {
       console.error("Error logging out user: ", error.message);
